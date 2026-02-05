@@ -22,7 +22,6 @@ title: "0xShin's Blog"
 email: tu-correo@ejemplo.com
 description: >-
   Reversing, Web Hacking y Writeups de HackTheBox.
-baseurl: "" # Déjalo vacío para GitHub Pages
 url: "https://0x00shin-github.io"
 baseurl: ""
 theme: minima # El tema clásico y limpio similar a 0xdf
