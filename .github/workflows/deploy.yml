@@ -22,7 +22,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Versión estable de Ruby
+          ruby-version: '3.2' # Versión estable de Ruby
           bundler-cache: true # Instala tus gemas automáticamente
       - name: Setup Pages
         uses: actions/configure-pages@v4
