@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </div>
+  </header>
+  
+
+
+
+  <main class="page-content">
+    <div class="wrapper flux-container">
+      <div class="main-column">
+        {{ content }}
+      </div>
+
+        <aside class="sidebar">
+        <div class="sidebar-section">
+            <h3>Categorías</h3>
+            <ul class="category-list">
+            {% assign categories = site.categories | sort %}
+            {% for category in categories %}
+                {% capture category_name %}{{ category | first }}{% endcapture %}
+                {% assign posts_count = category | last | size %}
+                <li>
+                <a href="{{ '/categories/' | relative_url }}#{{ category_name | slugify }}" class="sidebar-link">
+                    <span class="cat-name">{{ category_name }}</span>
+                    <span class="cat-count">[{{ posts_count }}]</span>
+                </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        </aside>
+    </div>
+  </main>
+</body>
+</html>

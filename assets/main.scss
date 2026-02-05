@@ -1,0 +1,175 @@
+---
+# Estilo Hacking: 0xdf Sidebar + FluxSec Cards + Monokai
+---
+
+$grey-color:       #828282 !default;
+$grey-color-light: #333333 !default; // Esto evita que lighten() falle
+$grey-color-dark:  #181818 !default;
+$brand-color:      #00ff41 !default;
+$background-color: #0a0a0a !default;
+$text-color:       #eeeeee !default;
+
+@import "minima";
+
+// 2. CONFIGURACIÓN GLOBAL DARK
+body {
+    background-color: #0a0a0a !important; 
+    color: #eeeeee !important;           
+}
+
+.wrapper {
+    max-width: 1200px; // Más ancho para que quepa la sidebar estilo 0xdf
+    margin: 0 auto;
+}
+
+// Contenedor para Sidebar + Contenido
+.flux-container {
+    display: flex;
+    gap: 30px;
+}
+
+.main-column {
+    flex: 3;
+}
+
+// 3. HEADER Y FOOTER
+.site-header, .site-footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.site-title, .site-nav .page-link {
+    color: #00ff41 !important;
+}
+
+// 4. EL BLOQUE DE CÓDIGO (Monokai Pro)
+.highlight {
+    background: #1e1e1e !important;   
+    border: 1px solid #333 !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 25px 0 !important;
+    overflow-x: auto !important;
+    
+    pre { background: transparent !important; margin: 0 !important; border: none !important; }
+    code {
+        font-family: "SFMono-Regular", Consolas, monospace !important;
+        font-size: 14px !important;
+        color: #f8f8f2 !important;
+        background: transparent !important;
+    }
+}
+
+// Colores Sintaxis
+.highlight .c, .highlight .cm, .highlight .c1 { color: #75715e !important; font-style: italic; } 
+.highlight .k, .highlight .kd, .highlight .kn { color: #66d9ef !important; } 
+.highlight .nf { color: #a6e22e !important; } 
+.highlight .s, .highlight .s2 { color: #e6db74 !important; } 
+.highlight .m, .highlight .mi { color: #ae81ff !important; } 
+.highlight .o, .highlight .p { color: #f92672 !important; } 
+
+// 5. SIDEBAR ESTILO 0xdf (Clases añadidas)
+.sidebar {
+  flex: 1;
+  background-color: #0d0d0d;
+  padding: 20px;
+  border-left: 1px solid #222;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+
+  h3 {
+    color: #ffffff !important;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #00ff41;
+    padding-bottom: 5px;
+    font-family: monospace;
+  }
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li { margin-bottom: 10px; }
+}
+
+.sidebar-link {
+  color: #4db6ac !important;
+  text-decoration: none;
+  font-family: monospace;
+  display: flex;
+  justify-content: space-between;
+  
+  &:hover {
+    color: #00ff41 !important;
+    background: rgba(0, 255, 65, 0.05);
+  }
+}
+
+// 6. TARJETAS ESTILO FLUXSEC
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+  gap: 25px;
+}
+
+.flux-card {
+  background: #0d0d0d !important;
+  border: 1px solid #1a1a1a;
+  border-left: 3px solid #00ff41;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    border-color: #00ff41;
+    transform: translateX(5px);
+  }
+}
+
+.card-content { padding: 20px; }
+.tag {
+  color: #00ff41;
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .post-grid { grid-template-columns: 1fr; }
+  .flux-container { flex-direction: column; }
+}
+
+
+/* --- ESTILO PARA CÓDIGO EN LÍNEA (ej: `_posts`) --- */
+
+// Esto afecta a cualquier texto entre comillas invertidas en el Markdown
+code {
+    background-color: #1a1a1a !important; // Un gris muy oscuro de fondo
+    color: #00ff41 !important;           // Verde terminal neón
+    padding: 2px 6px !important;         // Espaciado interno
+    border-radius: 4px !important;       // Bordes redondeados
+    font-family: "SFMono-Regular", Consolas, monospace !important;
+    font-size: 0.9em !important;         // Un poco más pequeño que el texto normal
+    border: 1px solid #333 !important;   // Borde sutil para que resalte
+}
+
+// Aseguramos que si el código está dentro de un párrafo no pierda el color
+p code, li code {
+    color: #00ff41 !important;
+}
+
+// EVITAR que esto afecte a los bloques grandes de código (los que ya se ven bien)
+pre code {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: inherit !important; // Mantiene los colores de Monokai en los bloques grandes
+}
